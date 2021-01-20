@@ -1,0 +1,93 @@
+\section{Basic}
+
+\subsection{Gaussian Distributions}
+
+$$p(x) = \frac{1}{\sigma \sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)$$
+
+$$p(x) = (2\pi)^{-\frac{d}{2}} \left|\Sigma\right|^{-\frac{1}{2}}\exp \left(-\frac{1}{2}(x-\mu)^\intercal\Sigma^{-1}(x-\mu)\right)$$
+
+\begin{align*}
+p\left(
+\begin{bmatrix}
+\mathbf a_1\\
+\mathbf a_2
+\end{bmatrix}
+\right)
+&=\mathcal N\left(
+\begin{bmatrix}
+\mathbf a_1\\
+\mathbf a_2
+\end{bmatrix}|
+\begin{bmatrix}
+\mathbf u_1\\
+\mathbf u_2
+\end{bmatrix},
+\begin{bmatrix}
+\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21}& \Sigma_{22}
+\end{bmatrix}
+\right)\\
+p(\mathbf a_2|\mathbf a_1=\mathbf z)&=\mathcal N\left(\mathbf a_2 | \mathbf u_2 + \Sigma_{21}\Sigma_{11}^{-1}(\mathbf z-\mathbf u_1), \Sigma_{22}-\Sigma_{21}\Sigma_{11}^{-1}\Sigma_{12}\right)
+\end{align*}
+
+\subsection{Derivations}
+
+\begin{align*}
+\frac {\text{d}\mathbf x^\top \mathbf B} {\text{d}x} &= \mathbf B\\
+\frac {\text{d}\mathbf x^\top \mathbf b} {\text{d}x} &= \mathbf b\\
+\frac {\text{d}\mathbf x^\top \mathbf x} {\text{d}x} &= 2 \mathbf x\\
+\frac {\text{d}\mathbf x^\top \mathbf B \mathbf x} {\text{d}x} &= 2 \mathbf {Bx}\\
+\frac {\partial\mathbf x^\top \mathbf B \mathbf x} {\partial x} &= \mathbf x^\top \mathbf x\\
+\frac {\text{d}} {\text{d}x} \mathbf B \mathbf x &\rightarrow \frac{\text d}{\text dx} \mathbf x^\top \mathbf B^\top\\
+\end{align*}
+
+\subsection{Taylor approximation}
+
+$$
+f(x)\approx f(a)+(x-a)^\intercal\nabla f(a) + (x-a)^\intercal H_f(a)(x-a)
+$$
+
+\subsection{Sylvester's criterion}
+
+Checks whether a symmetric/hermitian matrix is positive semi definite: M is positive-definite if and only if all the following matrices have a positive determinant:
+
+\begin{itemize}
+	\item the upper left 1-by-1 corner of $M$
+	\item the upper left 2-by-2 corner of $M$
+	\item the upper left 3-by-3 corner of $M$
+
+    $\vdots$
+
+	\item M itself.
+\end{itemize}
+
+\subsection{Determinant}
+
+$$
+|A|=\begin{vmatrix}
+	a & b\\
+	c & d
+\end{vmatrix} = ad - bc
+$$
+
+$$
+|A|=\begin{vmatrix}
+	a & b & c\\
+	d & e & f\\
+	g & h & i
+\end{vmatrix} = a
+\begin{vmatrix}
+	e & f\\
+	h & i
+\end{vmatrix}
+-b
+\begin{vmatrix}
+	d & f\\
+	g & i
+\end{vmatrix}
++c
+\begin{vmatrix}
+	d & e\\
+	g & h
+\end{vmatrix}
+$$
